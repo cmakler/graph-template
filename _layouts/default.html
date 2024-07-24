@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Individual Graph View</title>
-    <link href="https://kineticgraphs.org/css/kg.0.2.8.css" rel="stylesheet" type="text/css">
+    <title>Graph</title>
   </head>
   <body>
     <div id="graph" class="kg-container">
@@ -12,16 +11,30 @@
     <button style="float:right" onclick="KG.resetAllParams()">Reset Graph</button>
   </body>
       <script>
+        // Get details of requested graph and options from URL parameters
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const category = urlParams.get('category');
-        const graph = urlParams.get('graph');
-        const version = urlParams.get('version') || "0.2.7";
-        let kgjs=document.createElement("script");
+
+        // Get KGJS version, set JS and CSS to point to appropriate paths
+        const version = urlParams.get('version') || "0.3.2";
+        
         const kgjspath = "https://kineticgraphs.org/js/kg3d."+ version + ".js";
+        let kgjs=document.createElement("script");
         kgjs.setAttribute("src", kgjspath);
         document.body.appendChild(kgjs);
-        const path = "./problems/" + category + "/" + graph + ".yml";
+        
+        const kgcsspath = "https://kineticgraphs.org/css/kg."+ version + ".css";
+        let kgcss=document.createElement("link");
+        kgcss.setAttribute("href", kgcsspath);
+        kgcss.setAttribute("rel", "stylesheet");
+        kgcss.setAttribute("type", "text/css");
+        document.head.appendChild(kgcss);
+
+        // Get location of graph, set URL in graph div
+        const category = urlParams.get('folder');
+        const graph = urlParams.get('graph');      
+        const path = "./graphs/" + category + "/" + graph + ".yml";
         document.getElementById("graph").setAttribute("src", path);
+
       </script>
 </html>
