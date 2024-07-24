@@ -18,12 +18,13 @@ email: cmakler@stanford.edu
 description: >- # this means to ignore newlines until "baseurl:"
   A template repository for creating standalone KineticGraphs
 repository: "graph-template" # the name of your repository
-baseurl: "graph-template" # the subpath of your site, e.g. /blog
+baseurl: "/graph-template" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  cmakler
 
 # Build settings
 markdown: kramdown
+theme: minima
 plugins:
   - jekyll-feed
 
