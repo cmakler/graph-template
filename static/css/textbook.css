@@ -1,0 +1,63 @@
+ol {
+    list-style-type: lower-alpha;
+}
+
+.full-screen-link {
+    font-size:  12px;
+    color: #959595;
+    text-align: right;
+    width: 87.5%;
+}
+
+a.no-tufte-underline:link {
+    all:  unset;
+    cursor:  pointer;
+}
+
+.chapter {
+    padding: 10px;
+    font-size: 18pt;
+}
+
+.chapter_link {
+    padding: 5px;
+    font-size: 18pt;
+    vertical-align: center;
+}
+
+
+.chapter_number {
+    font-size: 18pt;
+    padding-top: 30pt;
+}
+
+.beta {
+    font-size: x-small;
+    color: darkorange;
+    font-style: normal;
+}
+
+.number {
+    padding-right: 15px;
+    padding-top: 5px;
+    font-size: 12pt;
+    text-align: right;
+    width: 20px;
+    float: left;
+}
+
+.subtitle {
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.draft {
+    font-size: x-small;
+    color: lightgrey;
+    font-style: normal;
+    padding-left: 10px;
+}

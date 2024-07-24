@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Individual Graph View</title>
+    <link href="https://kineticgraphs.org/css/kg.0.2.8.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="graph" class="kg-container">
+      (loading. please wait)
+    </div>
+    <button style="float:right" onclick="KG.resetAllParams()">Reset Graph</button>
+  </body>
+      <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const category = urlParams.get('category');
+        const graph = urlParams.get('graph');
+        const version = urlParams.get('version') || "0.2.7";
+        let kgjs=document.createElement("script");
+        const kgjspath = "https://kineticgraphs.org/js/kg3d."+ version + ".js";
+        kgjs.setAttribute("src", kgjspath);
+        document.body.appendChild(kgjs);
+        const path = "./problems/" + category + "/" + graph + ".yml";
+        document.getElementById("graph").setAttribute("src", path);
+      </script>
+</html>

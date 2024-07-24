@@ -1,0 +1,6 @@
+{% if page.version %}
+{% assign version = page.version %}
+{% else %}
+{% assign version = "0.2.8" %}
+{% endif %}
+<div class="kg-container" src="{{ include.graph }}.yml"></div><div class="full-screen-link"><a href="../../graph.html?category={{ include.category }}&graph={{ include.graph }}&version={{ version }}" target="_new">Full screen version</a></div>
