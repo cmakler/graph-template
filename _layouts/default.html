@@ -2,11 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Graph</title>
+    <title id="kg-title">Graph</title>
   </head>
   <body>
     <div id="kg-graph" class="kg-container">
       (loading. please wait)
+    </div>
+    <div id="kg-toc" style="display:none">
+      {{ content }}
     </div>
     <button id="kg-reset" style="float:right; display:none" onclick="KG.resetAllParams()">Reset Graph</button>
   </body>
@@ -15,31 +18,47 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
-        // Get location of graph, set URL in graph div
-        const category = urlParams.get('folder');
-        const graph = urlParams.get('graph');      
-        const path = "{{site.baseurl}}/graphs/" + category + "/" + graph + ".yml";
-        document.getElementById("kg-graph").setAttribute("src", path);
-
-        // Get KGJS version, set JS and CSS to point to appropriate paths
-        const version = urlParams.get('version') || "0.3.2";
-        
-        const kgjspath = "{{site.baseurl}}/static/js/kg3d."+ version + ".js";
-        let kgjs=document.createElement("script");
-        kgjs.setAttribute("src", kgjspath);
-        document.body.appendChild(kgjs);
-
-        // Add reset button
-        const allowReset = urlParams.get('allowReset');
-        if(allowReset) {
-          document.getElementById("kg-reset").setAttribute("style","float:right; display:block");
+        // Set title, if there is one
+        const title = urlParams.get('title');
+        if(title) {
+          document.getElementById("kg-title").innerHTML = title;
         }
-        
-        const kgcsspath = "{{site.baseurl}}/static/css/kg."+ version + ".css";
-        let kgcss=document.createElement("link");
-        kgcss.setAttribute("href", kgcsspath);
-        kgcss.setAttribute("rel", "stylesheet");
-        kgcss.setAttribute("type", "text/css");
-        document.head.appendChild(kgcss);
+
+        // Look for graph specified in 
+        let graphDiv = document.getElementById("kg-graph")
+        const category = urlParams.get('category');
+        const graph = urlParams.get('graph');
+        if(category && graph) {
+          const path = "{{site.baseurl}}/graphs/" + category + "/" + graph + ".yml";
+          graphDiv.setAttribute("src", path);
+
+          // Get KGJS version, set JS and CSS to point to appropriate paths
+          const version = urlParams.get('version') || "0.3.2";
+          
+          const kgjspath = "{{site.baseurl}}/static/js/kg3d."+ version + ".js";
+          let kgjs=document.createElement("script");
+          kgjs.setAttribute("src", kgjspath);
+          document.body.appendChild(kgjs);
+
+          // Add reset button
+          const allowReset = urlParams.get('allowReset');
+          if(allowReset) {
+            document.getElementById("kg-reset").setAttribute("style","float:right; display:block");
+          }
+          
+          const kgcsspath = "{{site.baseurl}}/static/css/kg."+ version + ".css";
+          let kgcss=document.createElement("link");
+          kgcss.setAttribute("href", kgcsspath);
+          kgcss.setAttribute("rel", "stylesheet");
+          kgcss.setAttribute("type", "text/css");
+          document.head.appendChild(kgcss);
+
+        } else {
+
+          graphDiv.innerHTML = "";
+          let tocDiv = document.getElementById("kg-toc");
+          tocDiv.setAttribute("style", "display:block");
+
+        }
       </script>
 </html>

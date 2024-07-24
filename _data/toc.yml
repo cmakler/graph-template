@@ -1,0 +1,5 @@
+- title: Elasticity
+  folder: elasticity
+  graphs:
+  - title: Midpoint Method
+    filename: midpoint
