@@ -4,4 +4,6 @@ All graphs are found as .yml files within the "graphs" folder. You can have any 
 
 You do not need to run locally to make changes; you can make changes directly to the .yml files in this repository and the changes will be reflected after a few seconds. You should use https://kineticgraphs.org/author to edit the YML files. Note that that page doesn't save your work!
 
+If no graph is specified, the page will redirect to a contents page. This is driven by the data in the file `\_data/toc.yml`. This must be edited by hand, and provides links to the graphs; be sure the "folder" and "filename" fields correspond to the structure. You can also just have placeholders with titles and descriptions; these will be displayed without links.
+
 Best practice is to clone your repository to a local computer; work on kineticgraphs.org and save your code locally; then, when you're done, push your changes out to Github. If you do want to run locally, I recommend following the instructions [here](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll).

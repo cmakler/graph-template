@@ -1,5 +1,8 @@
 - title: Elasticity
   folder: elasticity
   graphs:
-  - title: Midpoint Method
-    filename: midpoint
+  - filename: midpoint
+    title: Midpoint Method
+    description: Allows the user to drag two points; shows how the midpoint method is used to calculate the elasticity between those two points.
+  - title: Point Method
+    description: New graph illustrating the point elasticity method
